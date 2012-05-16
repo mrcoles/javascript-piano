@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8>
+        <title>Piano!</title>
+        <link rel="stylesheet" type="text/css" href="piano.css" />
+    </head>
+    <body>
+        <div id="content">
+            <div id="content-inner">
+                <div id="piano">
+                    <h1>Javascript Piano</h1>
+                    <div class="help show" tabindex="1">
+                        <div class="help-inner">
+                            <div id="synth-settings"></div>
+                            <div class="opts">
+                                <p><strong>Controls:</strong></p>
+                                <p>play using home row &amp; above &nbsp; /</p>
+                                <p>change playable keys: “,” &amp; “.” &nbsp; /</p>
+                                <p>shift keyboard: ← &amp; → <span id="shift"></span></p>
+                            </div>
+                            <div class="opts">
+                                <p><strong>Extras:</strong></p>
+                                <p class="toggle-color toggle hold">Color - c &nbsp; /</p>
+                                <p class="toggle-demo toggle">Demo - m &nbsp; /</p>
+                                <p class="toggle-animate toggle">Visual mode - 8 &nbsp; /</p>
+                                <p class="toggle-looper">Looper - 9 &nbsp; /</p>
+                                <p>Help - 0</p>
+
+                                <!--
+                                <p class="toggle-looper">Looper - 9 &nbsp; /</p>
+                                <p class="toggle-animate toggle">Visual mode - 8 &nbsp; /</p>
+                                <p class="toggle-demo toggle">Demo - m &nbsp; /</p>
+                                <p class="toggle-color toggle hold">Color - c</p>
+                                -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="loop" tabindex="2">loop</div>
+                </div>
+            </div>
+        </div>
+        <div id="below">
+            <p id="info">info</p>
+            <p id="top">↑</p>
+            <div id="below-inner">
+                <h2>HTML5 Javascript Piano</h2>
+                <p>This synth piano is written <em>solely</em> using HTML, JS, and CSS. It contains a small handful of synths with configurable decays, a looper, demo mode, visual mode, and a variety of colors. View controls by hitting the top-right button on the piano.</p>
+                <p>
+                    It doesn't use a single static audio file, instead it generates them on the fly at the byte level and then converts them to files using the data URI schema. On a similar note, it doesn't use a single image either, just CSS.
+                    You can make pretty much any kind of file with a data URI, such as a
+                    <a href="http://mrcoles.com/low-res-paint/">bitmap file</a> or a
+                    <a href="http://mrcoles.com/favicon-generator/">favicon</a>.
+                </p>
+                <p><span title="May 16, 2012">Currently</span> iOS doesn’t support HTML5 audio well enough in the browser to make this work. So, no go on iPhone and iPad, for now.</p>
+                <p>Various people have been experimenting with audio files and data URIs for a while now. I first came across <a href="http://www.sk89q.com/playground/jswav/">this implementation</a> by sk89q, which was helpful in getting my audio files to work. For future projects, I will probably use an audio api, but currently it’s just <a href="http://caniuse.com/audio-api">firefox &amp; chrome</a>. For further reading, here is a good overview of <a href="http://matt.west.co.tt/music/jasmid-midi-synthesis-with-javascript-and-html5-audio/">the state of HTML5 audio</a> from December 2010.</p>
+                <p>By <a href="http://mrcoles.com">Peter Coles</a> – May 16, 2012</p>
+            </div>
+        </div>
+        <script src="jquery-1.7.1.min.js"></script>
+        <script src="audio.js"></script>
+        <script src="piano.js"></script>
+    </body>
+</html>

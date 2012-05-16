@@ -1,0 +1,255 @@
+html,body,div,span,h1,p{margin:0;padding:0;}
+
+html {
+    background: #fff;
+    font: normal 14px/24px futura, Helvetica, Arial, sans serif;
+    color: #999;
+}
+
+strong { font-weight: normal; }
+a { text-decoration: none; }
+
+html, body { height: 100%; }
+
+#content {
+    min-height: 100%;
+    text-align: left;
+    overflow: hidden;
+}
+
+#content-inner {
+    padding: 60px 0;
+}
+
+#piano {
+    position: relative;
+    margin: 0 auto;
+    padding: 80px 40px 16px;
+    width: 782px;
+    background: #f33;
+    border-radius: 20px;
+    box-shadow: 0 1px 0 #999, 0 2px 0 #999, 0 3px 0 #999, 1px 4px 0 #999, 2px 5px 0 #999, 3px 6px 0 #999, 4px 7px 0 #999, 5px 8px 0 #999, 0 0 8px #000;
+    z-index: 2;
+}
+
+
+/** keys */
+
+#piano .keys {
+    /*width: 1144px;*/
+    width: 780px;
+    padding: 2px 0 0 2px;
+    overflow: hidden;
+    background: #000;
+    border-radius: 0 0 4px 4px;
+}
+
+.key {
+    float: left;
+    position: relative;
+    width: 50px;
+    height: 180px;
+    margin: 0 2px 2px 0;
+    background: #fff;
+    border-radius: 0 0 4px 4px;
+}
+.key.pressed,
+.key:active {
+    background: #f4f3f3;
+    box-shadow: inset 3px 2px 3px #999, inset -3px 2px 3px #999;
+}
+.key.black {
+    width: 0;
+    margin: 0;
+    z-index: 2;
+}
+.key.black:after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -16px;
+    display: block;
+    width: 32px;
+    height: 117px;
+    background: #000;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 1px 1px 0 #555, 2px 2px 0 #555;
+}
+.key.black1:after {
+    left: -20px;
+}
+.key.black3:after {
+    left: -16px;
+}
+.key.black.pressed:after,
+.key.black:active:after {
+    background-color: #222;
+}
+
+/* **/
+
+
+/** header */
+
+h1 {
+    position: absolute;
+    top: 25px;
+    left: 40px;
+    font-size: 16px;
+    line-height: 20px;
+    color: #fff;
+    text-shadow: -1px -1px 0 #000
+}
+
+/* **/
+
+
+/** help */
+
+.loop,
+.help {
+    position: absolute;
+    top: 25px;
+    right: 42px;
+    width: 20px;
+    height: 20px;
+    color: transparent;
+    background: rgba(255, 255, 255, .25);
+    box-shadow: 1px 1px 0 rgba(0, 0, 0, .35), 1px 0 0 rgba(0, 0, 0, .35), 0 1px 0 rgba(0, 0, 0, .35), inset 1px 1px 0 rgba(255,255,255,.4);
+    border-radius: 2px;
+    z-index: 10;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.loop.active,
+.loop:active,
+.help.show,
+.help:active {
+    box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .35);
+}
+
+.loop {
+    right: 82px;
+}
+
+.help .help-inner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+
+    transition: all 1s;
+    -moz-transition: all 1s; /* Firefox 4 */
+    -webkit-transition: all 1s; /* Safari and Chrome */
+    -o-transition: all 1s; /* Opera */
+}
+
+.help.show .help-inner {
+    top: 55px;
+    padding: 20px;
+    width: 740px;
+    height: 142px;
+    line-height: 24px;
+    color: #eee;
+    background: rgba(0, 0, 0, .85);
+    border-radius: 4px;
+    cursor: default;
+}
+
+.help.show:focus { outline: none; }
+
+.opts { margin: 0; overflow: hidden; zoom: 1; width: 740px; height: 36px; line-height: 36px; }
+.opts p { float: left; margin: 0 10px 0 0; }
+.opts p:first-child { width: 6em; }
+.opts p .selected { color: #999; font-style: italic; }
+
+.toggle { cursor: pointer; }
+
+.help a {
+    display: inline-block;
+    padding: 0 2px;
+    color: #ccc;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.help a:before {
+    content: "_";
+}
+.help a:after {
+    content: "_";
+}
+
+/* **/
+
+/** below */
+
+#below {
+    position: relative;
+    min-height: 100%;
+    border-top: 2px solid #222;
+    background: #333;
+    line-height: 20px;
+    color: #eee;
+    text-shadow: 1px 1px 0 #000;
+}
+
+#info {
+    position: absolute;
+    top: -42px;
+    left: 0;
+    padding: 10px 20px;
+    line-height: 20px;
+    color: #333;
+    text-shadow: none;
+    cursor: pointer;
+}
+
+#top {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px 20px;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#top:hover {
+    color: red;
+}
+
+#info:hover {
+    color: #eee;
+    text-shadow: 1px 1px 0 #000;
+    background: #333;
+    border-radius: 0 10px 0 0;
+}
+
+#below-inner {
+    margin: 0 auto;
+    padding: 18px 0 20px;
+    width: 780px;
+    text-align: left;
+}
+
+#below-inner h2 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#below-inner p {
+    margin-bottom: 20px;
+}
+
+#below-inner a {
+    color: #fff;
+    font-weight: bold;
+}
+
+/* **/
