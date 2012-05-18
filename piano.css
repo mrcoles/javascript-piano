@@ -253,3 +253,19 @@ h1 {
 }
 
 /* **/
+
+.note {
+    position: fixed;
+    top: 20%;
+    left: 30%;
+    width: 40%;
+    background: #111;
+    background: rgba(0,0,0,.85);
+    border-radius: 10px;
+    padding: 60px 0;
+    color: #fff;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    z-index: 999;
+}
