@@ -26,7 +26,7 @@
 
     var buildingPiano = false;
 
-    var isIos = navigator.userAgent.match(/(iPhone|iPod)/i);
+    var isIos = navigator.userAgent.match(/(iPhone|iPad)/i);
 
     function buildPiano() {
         if (buildingPiano) return;
