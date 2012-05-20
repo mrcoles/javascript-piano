@@ -26,6 +26,8 @@
 
     var buildingPiano = false;
 
+    var isIos = navigator.userAgent.match(/(iPhone|iPad)/i);
+
     function buildPiano() {
         if (buildingPiano) return;
         buildingPiano = true;
@@ -34,7 +36,7 @@
         $keys.empty().off('.play');
 
         function addKey(i) {
-            var dataURI = Notes.getDataURI(i);
+            var dataURI = isIos ? '' : Notes.getDataURI(i);
 
             // trick to deal with note getting hit multiple times before finishing...
             var sounds = [
@@ -482,7 +484,7 @@
     // Silly colors
     //
     (function() {
-        var shouldAnimate = false,
+        var shouldAnimate = true,
             $piano = $('#piano'),
             W = $piano.width(),
             H = 500,
@@ -649,6 +651,19 @@
         $('.toggle-animate').click(toggleAnimate);
         $button.click(toggleAnimate);
     })();
+
+    if (isIos) {
+        $(function() {
+            var $note = $('<div>', {
+                'class': 'note',
+                'text': 'Note: sound does not work on iOS, but you can still enjoy pretty wave forms!'
+            }).appendTo('body');
+
+            window.setTimeout(function() {
+                $note.fadeOut();
+            }, 6000);
+        });
+    }
 
 
 
