@@ -26,7 +26,7 @@
 
     var buildingPiano = false;
 
-    var isIos = navigator.userAgent.match(/(iPhone|iPod)/i);
+    var isIos = navigator.userAgent.match(/(iPhone|iPad)/i);
 
     function buildPiano() {
         if (buildingPiano) return;
@@ -78,11 +78,12 @@
         }
 
         // delayed for-loop to stop browser from crashing :'(
-        var i = -12, max = 14;
+        // go slower on Chrome...
+        var i = -12, max = 14, addDelay = /Chrome/i.test(navigator.userAgent) ? 100 : 50;
         (function go() {
             addKey(i + notesOffset);
             if (++i < max) {
-                window.setTimeout(go, 50);
+                window.setTimeout(go, addDelay);
             } else {
                 buildingPiano = false;
                 $keys.trigger('build-done.piano');
