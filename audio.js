@@ -24,11 +24,15 @@ window.log = function f(){ log.history = log.history || []; log.history.push(arg
         return result.join('');
     }
 
+    function attack(i) {
+        return i < 200 ? (i/200) : 1;
+    }
+
     var DataGenerator = $.extend(function(styleFn, volumeFn, cfg) {
         cfg = $.extend({
             freq: 440,
             volume: 32767,
-            sampleRate: 2024, // Hz
+            sampleRate: 11025, // Hz
             seconds: .5,
             channels: 1
         }, cfg);
@@ -42,7 +46,7 @@ window.log = function f(){ log.history = log.history || []; log.history.push(arg
                         volumeFn(
                             styleFn(cfg.freq, cfg.volume, i, cfg.sampleRate, cfg.seconds, maxI),
                             cfg.freq, cfg.volume, i, cfg.sampleRate, cfg.seconds, maxI
-                        ), 2
+                        ) * attack(i), 2
                     )
                 );
             }
@@ -105,7 +109,7 @@ window.log = function f(){ log.history = log.history || []; log.history.push(arg
 
         cfg = $.extend({
             channels: 1,
-            sampleRate: 2024, // Hz
+            sampleRate: 11025, // Hz
             bitDepth: 16, // bits/sample
             seconds: .5,
             volume: 20000,//32767,
