@@ -79,7 +79,7 @@
 
         // delayed for-loop to stop browser from crashing :'(
         // go slower on Chrome...
-        var i = -12, max = 14, addDelay = /Chrome/i.test(navigator.userAgent) ? 100 : 50;
+        var i = -12, max = 14, addDelay = /Chrome/i.test(navigator.userAgent) ? 80 : 0;
         (function go() {
             addKey(i + notesOffset);
             if (++i < max) {

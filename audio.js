@@ -8,6 +8,15 @@ window.log = function f(){ log.history = log.history || []; log.history.push(arg
 
 (function() {
 
+    // test if we can use blobs
+    var canBlob = false;
+    if ((window.URL || window.webkitURL) && window.Blob) {
+        try {
+            new Blob();
+            canBlob = true;
+        } catch(e) {}
+    }
+
     function asBytes(value, bytes) {
         // Convert value into little endian hex bytes
         // value - the number as a decimal integer (representing bytes)
@@ -159,7 +168,19 @@ window.log = function f(){ log.history = log.history || []; log.history.push(arg
             dataChunk
         ].join('');
 
-        return 'data:audio/wav;base64,' + btoa(data);
+        if (canBlob) {
+            // so chrome was blowing up, because it just blows up sometimes
+            // if you make dataURIs that are too large, but it lets you make
+            // really large blobs...
+            var view = new Uint8Array(data.length);
+            for (var i = 0; i < view.length; i++) {
+                view[i] = data.charCodeAt(i);
+            }
+            var blob = new Blob([view], {type: 'audio/wav'});
+            return (window.URL || window.webkitURL).createObjectURL(blob);
+        } else {
+            return 'data:audio/wav;base64,' + btoa(data);
+        }
     }
 
     function noteToFreq(stepsFromMiddleC) {

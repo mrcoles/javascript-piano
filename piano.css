@@ -220,6 +220,12 @@ h1 {
     cursor: pointer;
 }
 
+.twitter-share-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
 #top:hover {
     color: red;
 }
