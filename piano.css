@@ -222,7 +222,7 @@ h1 {
 
 .twitter-share-button {
     position: absolute;
-    top: 0;
+    bottom: 40px;
     right: 0;
 }
 
