@@ -10,7 +10,7 @@ window.log = function f(){ log.history = log.history || []; log.history.push(arg
 
     // test if we can use blobs
     var canBlob = false;
-    if ((window.URL || window.webkitURL) && window.Blob) {
+    if (window.webkitURL && window.Blob) {
         try {
             new Blob();
             canBlob = true;
@@ -177,7 +177,7 @@ window.log = function f(){ log.history = log.history || []; log.history.push(arg
                 view[i] = data.charCodeAt(i);
             }
             var blob = new Blob([view], {type: 'audio/wav'});
-            return (window.URL || window.webkitURL).createObjectURL(blob);
+            return  window.webkitURL.createObjectURL(blob);
         } else {
             return 'data:audio/wav;base64,' + btoa(data);
         }
