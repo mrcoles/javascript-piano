@@ -1,3 +1,6 @@
+/*! Copyright (c) 2013 - Peter Coles (mrcoles.com)
+ *  Licensed under the MIT license: http://mrcoles.com/media/mit-license.txt
+ */
 
 (function() {
 
